@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <title>Language Translator | CodingNepal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CDN Link for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+   <script>
+      function myFunction() {
+          var copyText = document.getElementById("copy");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); // For mobile devices
+          navigator.clipboard.writeText(copyText.value);
+          console.log("Copied the text: " + copyText.value);
+}
+    </script>
+  <body>
+      <div class="container">
+      <form action="{{ url_for('result') }}" method="post">
+      <div class="wrapper">
+        <div class="text-input">
+          <textarea spellcheck="false" name="text-translate" class="from-text" placeholder="Enter text"></textarea>
+          <textarea spellcheck="false" name="result-translate" readonly disabled class="to-text" id="copy" placeholder="">{{result}}</textarea>
+        </div>
+        <ul class="controls">
+          <li class="row from">
+            <div class="icons">
+              <i id="from" class="fas fa-volume-up"></i>
+              <i id="from" class="fas fa-copy"></i>
+            </div>
+            <select id="translate-language" name="from-language">
+              <option value="uz">Uzbek</option>
+              <option value="en">English</option>
+              <option value="ar">Arabic</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="pt">Portuguese</option>
+              <option value="ru">Russian</option>
+              <option value="es">Spanish</option>
+              <option value="tr">Turkish</option>
+          </select>
+          </li>
+          <li class="exchange"><i class="fas fa-exchange-alt"></i></li>
+          <li class="row to">
+            <select id="translate-language" name="to-language">
+              <option value="en">English</option>
+              <option value="uz">Uzbek</option>
+              <option value="ar">Arabic</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="it">Italian</option>
+              <option value="pt">Portuguese</option>
+              <option value="ru">Russian</option>
+              <option value="es">Spanish</option>
+              <option value="tr">Turkish</option>
+          </select>
+            <div class="icons">
+              <i id="to" class="fas fa-volume-up"></i>
+              <button onclick="myFunction()" style="background-color: rgb(255, 255, 255);">
+                <i id="to" style="margin-bottom:17px;" class="fas fa-copy"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+        <button type="submit">Translate Text</button>
+    </form>
+    </div>
+
+    <script src="js/countries.js"></script>
+    <script src="js/script.js"></script>
+ 
+  </body>
+</html>
